@@ -1,0 +1,48 @@
+Warunki duplikatów:
+- nazwa pliku znajduje sie w tabeli processed files
+- te same search_criteria  (dzień, miasto i wartości min, max)
+
+
+TODO Short term
+1(DONE). Odpalenie data_prep_and_insert.py w Dockerze
+
+2.      data_prep_and_insert.py
+ (DONE)     - powinno spawdzać czy wszystkie pliki z folderu data są obecne w bazie
+ (DONE)     - dodanie kolumny z nazwą pliku z którego pochodzi wiersz
+ (DONE)     - refactor głównego pliku dodanie folderu utils
+ (DONE)     - identyfikowanie duplikatów
+ (DONE)     - Tabela precessed_files - śledząca nazwy zaczytanych plików
+ (DONE)      - Przed odpaleniem przetwarzania plików sprawdzic czy tabele są obecne w bazie (create if not exsist for all tables)
+
+3(DONE)  Dodanie pytania na stack overflow o Docker i selenium
+
+4.   zbudowanie API nie opierając sie o Modele z SQLAlchemy ale walidowanie w Pandas i tabele stworzone w SQL
+ (DONE)      - Postawienie podstawowego API i uruchomienie endpointa uzupełniajacego bazę w Dockerze
+ (DONE)      - naprawić kolumnę scrap time (zmienić na datę)
+             - upewnić się że tabele tworzą się automatycznie po zainicjowaniu aplikacji a nie przy odświeżaniu
+
+
+
+
+
+API Endpoints
+(Get)
+
+    (general) /general
+(DONE)   - uzupełnij bazę (wykonaj data_prep_and_insert.py)
+(DONE)   - przegląd miast w bazie json (max i min metraże w bazie, średnia cena z metra, ilość distinct ogłoszeń, min i max data zebranych danych)
+(DONE)   - zidentyfikuj ogłoszenia dla których zmieniły sie ceny
+(DONE)   - różnice między wtórnym (prywatny a biuro) a pierwotnym rynkiem (cena)
+(DONE)   - wiek mieszkania a cena i czynsz
+
+
+    (detailed) /miasto/max/min
+(DONE)   - lista najświeższych ogłoszeń dla danego miasta i metrażu
+(DONE)   - średnie ceny w czasie
+         - średnie ceny całości i z metra dla poszczególnych grup wielkości mieszkania
+
+(Post) - uwierzytelnienie
+    -(po udanym dodaniu scrapingu) dodanie miasta i metrażu do szukania
+    - sprawdzenie aktualności linków i update bazy (trzeba będzie dodać kolumnę z aktualnością linku lub stworzyć oddzielna tabelę)
+
+
